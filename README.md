@@ -54,8 +54,10 @@ import { connectIntrojsStep, connectIntrojsControl } from 'react-introjs';
 import styles from './App.css';
 
 const IntrojsStartButton = connectIntrojsControl((props) => {
-  const { introjsStart } = props;
-  return <button onClick={() => introjsStart()} >introjs start</button>;
+  const { introjsStart, introjsIsConfigured } = props;
+  return <button onClick={() => {
+    if(introjsIsConfigured()) introjsStart()
+  }} >introjs start</button>;
 });
 
 const App = (props) => {

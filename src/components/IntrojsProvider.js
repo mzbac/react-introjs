@@ -19,6 +19,7 @@ class IntrojsProvider extends Component {
     this.stepsData = [];
     this.hints = [];
     this.isVisible = false;
+    this.isConfigured = false;
     this.installIntroJs();
   }
 
@@ -29,6 +30,7 @@ class IntrojsProvider extends Component {
       setIntrojsHints: this.setIntrojsHints.bind(this),
       getIntrojsHints: this.getIntrojsHints.bind(this),
       startRenderIntrojsSteps: this.startRenderSteps.bind(this),
+      introjsIsConfigured: this.introjsIsConfigured.bind(this),
     };
   }
 
@@ -107,6 +109,7 @@ class IntrojsProvider extends Component {
     this.hints = hints;
   };
   getIntrojsHints = () => this.hints;
+  introjsIsConfigured = () => this.isConfigured;
 
   installIntroJs() {
     this.introJs = introJs();
@@ -122,6 +125,7 @@ class IntrojsProvider extends Component {
     onConfigureIntroJs().then(steps => {
       this.introJs.setOptions({ ...options, steps });
       this.stepsData = steps;
+      this.isConfigured = true;
     });
   }
 
@@ -164,5 +168,6 @@ IntrojsProvider.childContextTypes = {
   setIntrojsHints: PropTypes.func.isRequired,
   getIntrojsHints: PropTypes.func.isRequired,
   startRenderIntrojsSteps: PropTypes.func.isRequired,
+  introjsIsConfigured: PropTypes.func.isRequired,
 };
 export default IntrojsProvider;

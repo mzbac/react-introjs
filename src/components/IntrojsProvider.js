@@ -2,8 +2,6 @@ import { Component, Children } from 'react';
 import { introJs } from 'intro.js';
 import PropTypes from 'prop-types';
 import { optionsPropTypes } from '../proptypes/PropTypes';
-import 'intro.js/introjs.css';
-import 'IntrojsProvider.css';
 
 class IntrojsProvider extends Component {
   static defaultProps = {
@@ -132,7 +130,6 @@ class IntrojsProvider extends Component {
       if (afterConfiguredIntroJs) afterConfiguredIntroJs.call(this);
     });
   }
-
 
   startRenderSteps(initialStep = 0) {
     const { onStart } = this.props;

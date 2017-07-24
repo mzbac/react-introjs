@@ -1,0 +1,7 @@
+.introjs-overlay {
+    display: none;
+}
+
+.introjs-helperLayer {
+    background-color: rgba(255, 255, 255, 0);
+}

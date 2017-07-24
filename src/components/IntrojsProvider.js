@@ -127,7 +127,7 @@ class IntrojsProvider extends Component {
       this.introJs.setOptions({ ...options, steps });
       this.stepsData = steps;
       this.isConfigured = true;
-      if (afterConfiguredIntroJs) afterConfiguredIntroJs.call(this);
+      if (afterConfiguredIntroJs) afterConfiguredIntroJs.call(this, this);
     });
   }
 

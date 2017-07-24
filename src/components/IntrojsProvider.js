@@ -10,6 +10,7 @@ class IntrojsProvider extends Component {
     onAfterChange: null,
     onChange: null,
     onComplete: null,
+    afterConfiguredIntroJs: null,
     options: {},
   };
 
@@ -121,13 +122,15 @@ class IntrojsProvider extends Component {
   }
 
   configureIntroJs() {
-    const { options, onConfigureIntroJs } = this.props;
+    const { options, onConfigureIntroJs, afterConfiguredIntroJs } = this.props;
     onConfigureIntroJs().then(steps => {
       this.introJs.setOptions({ ...options, steps });
       this.stepsData = steps;
       this.isConfigured = true;
+      if (afterConfiguredIntroJs) afterConfiguredIntroJs.call(this);
     });
   }
+
 
   startRenderSteps(initialStep = 0) {
     const { onStart } = this.props;
@@ -154,6 +157,7 @@ IntrojsProvider.propTypes = {
   children: PropTypes.element.isRequired,
   onExit: PropTypes.func.isRequired,
   onConfigureIntroJs: PropTypes.func.isRequired,
+  afterConfiguredIntroJs: PropTypes.func,
   onStart: PropTypes.func,
   onBeforeChange: PropTypes.func,
   onAfterChange: PropTypes.func,
